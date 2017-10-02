@@ -33,6 +33,14 @@ class Node {
 		}
 		return neighborArray;
 	}
+	isNeighbourOf(id) {
+		return !!this.neighbours[id];
+	}
+	getNeighbor(id) {
+		if(!this.isNeighbourOf(id))
+			return null;
+		return this.neighbours[id];
+	}
 }
 
 module.exports = Node;

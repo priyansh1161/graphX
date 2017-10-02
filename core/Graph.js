@@ -32,4 +32,7 @@ class Graph {
 			this.nodes[from].removeNeighbour(to);
 		}
 	}
+	hasAnEdge(from, to) {
+		return this.nodes[from].isNeighbourOf(to);
+	}
 }
