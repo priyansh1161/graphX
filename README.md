@@ -1,2 +1,2 @@
 # graphX
-Graph/Network analysis in node.js
+Parallel Network analysis in GoLang using parallel threads.
