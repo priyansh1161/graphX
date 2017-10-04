@@ -1,4 +1,4 @@
-package graph
+package main
 
 import "errors"
 
@@ -8,11 +8,15 @@ func(g *Graph) BFS(nodeIndex int) ([]Node, error) {
 	}
 	queue := []int{nodeIndex}
 	result := []Node{}
+	visited := map[int]bool{}
+	visited[nodeIndex] = true
 	for len(queue) > 0 {
 		result = append(result, *g.indexMap[queue[0]])
 		currList := g.adj[queue[0]]
 		for e := currList.Front(); e != nil; e = e.Next() {
-			queue = append(queue, e.Value.(int))
+			if !visited[e.Value.(int)] {
+				queue = append(queue, e.Value.(int))
+			}
 		}
 		queue = queue[1:]
 	}
