@@ -13,5 +13,5 @@ type Node struct {
 }
 
 func(n *Node) String() string {
-	return fmt.Sprintf("%d", n.value)
+	return "The Value is " + fmt.Sprintf("%d", n.value)
 }

@@ -2,6 +2,7 @@ package main
 
 import (
 	"container/list"
+	//"fmt"
 	"fmt"
 )
 
@@ -19,6 +20,11 @@ type Graph struct {
 	adj []*list.List
 }
 
+func(g *Graph) init() {
+	g.nodeMap = make(map[*Node] int)
+	g.indexMap = make(map[int] *Node)
+}
+
 func(g *Graph) addNode(node *Node) (int, *list.Element) {
 	g.nodeMap[node] = g.nodes
 	g.indexMap[g.nodes] = node
@@ -33,10 +39,13 @@ func(g *Graph) addEdge(from int, to int) {
 	g.adj[from].PushBack(to)
 }
 
-func(g *Graph) String() {
+func(g *Graph) String() string {
+	var bfsGraph string
 	for i :=0; i < g.nodes; i++ {
-		fmt.Println(g.BFS(i))
+		traversed, _ := g.BFS(i)
+		bfsGraph += fmt.Sprint(traversed) + "\n"
 	}
+	return bfsGraph
 }
 
 //func(g *Graph) removeEdge(from *Node, to *Node) {
